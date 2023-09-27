@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Value Adjustment</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        
+    
+        .img {
+            background-size: 100px 100px ;
+            position: relative;
+            border: 2px solid black;
+            width: fit-content;
+           
+        
+        }
+        img{
+          width: 100%;
+          height: 200px;
+        }
+    </style>
+</head>
+<body>
+  
+    <label for="blur">Blur :</label>
+    <input type="range" id="blur" min="0" max="100" step="1" value="50">
+    <label for="brightness">Brightness:</label>
+    <input type="range" id="brightness" min="0" max="200" step="1" value="100">
+    <label for="contrast">Contrast:</label>
+    <input type="range" id="contrast" min="0" max="200" step="1" value="100">
+    <label for="grayscale">Grayscale:</label>
+    <input type="range" id="grayscale" min="0" max="100" step="1" value="0">
+    
+    <div class="img">
+        <img id="image" src="kk.jpg" alt="">
+    </div>
+    <script src="script.js"></script>
+    <script>
+        const blurInput = document.getElementById('blur');
+        const brightnessInput = document.getElementById('brightness');
+        const contrastInput = document.getElementById('contrast');
+        const grayscaleInput = document.getElementById('grayscale');
+        const image = document.getElementById('image');
+        
+        blurInput.addEventListener('input', function() {
+            const blurValue = this.value;
+            image.style.filter = `blur(${blurValue}px) brightness(${brightnessInput.value}%) contrast(${contrastInput.value}%) grayscale(${grayscaleInput.value}%)`;
+        });
+        
+        brightnessInput.addEventListener('input', function() {
+            const brightnessValue = this.value;
+            image.style.filter = `blur(${blurInput.value}px) brightness(${brightnessValue}%) contrast(${contrastInput.value}%) grayscale(${grayscaleInput.value}%)`;
+        });
+
+        contrastInput.addEventListener('input', function() {
+            const contrastValue = this.value;
+            image.style.filter = `blur(${blurInput.value}px) brightness(${brightnessInput.value}%) contrast(${contrastValue}%) grayscale(${grayscaleInput.value}%)`;
+        });
+
+        grayscaleInput.addEventListener('input', function() {
+            const grayscaleValue = this.value;
+            image.style.filter = `blur(${blurInput.value}px) brightness(${brightnessInput.value}%) contrast(${contrastInput.value}%) grayscale(${grayscaleValue}%)`;
+        });
+    </script>
+</body>
+</html>
